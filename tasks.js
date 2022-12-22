@@ -49,7 +49,7 @@ function onDataReceived(text) {
 }
 
 function help(){
-  console.log(" -->hello"+"\n"+" --> exit "+"\n"+" --> quit")
+  console.log(" -->hello return hello!"+"\n"+" --> exit "+"\n"+" --> quit" )
 }
 /**
  * prints "unknown command"
