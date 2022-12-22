@@ -15,6 +15,7 @@ function startApp(name){
   process.stdin.on('data', onDataReceived);
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
+  console.log("help show three option u can use your option " )
 }
 
 
