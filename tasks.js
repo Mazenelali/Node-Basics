@@ -62,7 +62,6 @@ function unknownCommand(c){
   console.log('unknown command: "'+c.trim()+'"')
 }
 
-
 /**
  * Says hello
  * @param  {string} b
