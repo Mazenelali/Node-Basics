@@ -18,7 +18,6 @@ function startApp(name){
   console.log("help show three option u can use your option " )
 }
 
-
 /**
  * Decides what to do depending on the data that was received
  * This function receives the input sent by the user.
@@ -31,15 +30,15 @@ function startApp(name){
  * The text received would be "batata"
  * This function  then directs to other functions
  * 
- * @param  {string} text data typed by the user
+ * @param  {string} text  data typed by the user
  * @returns {void}
  */
 function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-  else if(text === 'hello\n'){
-    hello();
+  else if(text.startsWith("hello")){
+    hello(text)
   }
   else if(text === 'help\n'){
     help()
@@ -48,6 +47,7 @@ function onDataReceived(text) {
     unknownCommand(text);
   }
 }
+
 function help(){
   console.log(" -->hello"+"\n"+" --> exit "+"\n"+" --> quit")
 }
@@ -65,12 +65,13 @@ function unknownCommand(c){
 
 /**
  * Says hello
- *
+ * @param  {string} b
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(b) {
+  console.log(b.trim()+ "!")
 }
+
 /**
  * Exits the application
  *
@@ -80,6 +81,5 @@ function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
-
 // The following line starts the application
 startApp("Mazen elali")
