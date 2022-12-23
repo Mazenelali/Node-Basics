@@ -46,6 +46,12 @@ function onDataReceived(text) {
   else if( text == 'list\n'){
     list()
   }
+  else if (text === 'add\n'){
+    console.log("add somthing like add ....")
+  }
+  else if (text.startsWith("add")) {
+    add(text)
+  }	  
   else{
     unknownCommand(text);
   }
@@ -65,7 +71,7 @@ function unknownCommand(c){
   console.log('unknown command: "'+c.trim()+'"')
 }
 
-/**
+/** 
  * Says hello
  * @param  {string} b
  * @returns {void}
@@ -82,11 +88,25 @@ function hello(b) {
 let List = ["Task one","Task two","Task three"]
 function list (){
   
-  let li = List.map((tasks,index ,) =>`${index+1} - ${tasks}`
+  let li = List.map((tasks,index) =>`${index+1} - ${tasks}`
   ).join('\n')
   console.log(li);
   }
 
+ function add (){
+ console.log("add your task")
+ 
+}
+/**
+ * add
+ * @param {string} b
+ * @returns {void}
+ */
+ function add(b) {
+  console.log(`add`)	 
+  List.push(b.slice(4, b.length - 1))
+  console.log(`added!`)
+ }
 /**
  * Exits the application
  *
