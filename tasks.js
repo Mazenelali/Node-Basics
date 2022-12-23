@@ -61,6 +61,12 @@ function onDataReceived(text) {
   else if (text.startsWith("edit\n")){
   editOut(text)
   }
+  else if (text.startsWith("check")) {
+    check(text);
+
+  }else if (text.startsWith("uncheck")) {
+    uncheck(text);
+  }	  
   else {
     unknownCommand(text);
   }
@@ -93,7 +99,7 @@ function hello(b) {
  * @returns {void}
  */
 
-let List = ["Task one", "Task two", "Task three"]
+let List = ["[✓] Task one", "[ ] Task two", "[✓] Task three"]
 function list() {
 
   let li = List.map((tasks, index) => `${index + 1} - ${tasks}`
@@ -137,7 +143,34 @@ function editOut (){
     console.log("error")
   }
 }
+function check(arg) {
+  const myArray = arg.split(" ");
+  if (arg == "check") {
+    console.log('error commend not found')
+  }
+  else {
+    let pos = myArray[1] - 1;
+    let oldItem = (List[myArray[1] - 1]).substring(3);
+    List.splice(pos, 1, '[✓]' + oldItem);
 
+  }}
+  /**
+   * 
+   * @returns {void}
+   *  
+   */
+
+  function uncheck(arg) {
+    const myArray = arg.split(" ");
+    if (arg == "uncheck") {
+      console.log('error commend not found')
+    }
+    else {
+      let pos = myArray[1] - 1;
+      let oldItem = (list[myArray[1] - 1]).substring(3);
+      List.splice(pos, 1, '[ ]' + oldItem);
+    }
+  }
 /**
  * Exits the application
  *
