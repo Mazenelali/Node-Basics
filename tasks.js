@@ -58,6 +58,9 @@ function onDataReceived(text) {
   else if (text.startsWith('remove')){
     Remove(text.slice(6,text.length-1))
   }
+  else if (text.startsWith("edit\n")){
+  editOut(text)
+  }
   else {
     unknownCommand(text);
   }
@@ -99,7 +102,7 @@ function list() {
 }
 /**
  * add
- * @param {string} b
+ * @param {string} c
  * @returns {void}
  */
 function add(b) {
@@ -124,6 +127,15 @@ function Remove(nb){
     console.log("eror")
   )
 
+}
+/**
+ * edit
+ * 
+ */
+function editOut (){
+  if (List = List){
+    console.log("error")
+  }
 }
 
 /**
