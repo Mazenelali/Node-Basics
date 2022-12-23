@@ -9,13 +9,13 @@
  * @param  {string} name the name of the app
  * @returns {void}
  */
-function startApp(name){
+function startApp(name) {
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
-  console.log("help show three option u can use your option " )
+  console.log("help show three option u can use your option ")
 }
 
 /**
@@ -37,28 +37,34 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-  else if(text.startsWith("hello")){
+  else if (text.startsWith("hello")) {
     hello(text)
   }
-  else if(text === 'help\n'){
+  else if (text === 'help\n') {
     help()
   }
-  else if( text == 'list\n'){
+  else if (text == 'list\n') {
     list()
   }
-  else if (text === 'add\n'){
+  else if (text === 'add\n') {
     console.log("add somthing like add ....")
   }
   else if (text.startsWith("add")) {
     add(text)
-  }	  
-  else{
+  }
+  else if (text === `remove\n`) {
+    List.remove()
+  }
+  else if (text.startsWith('remove')){
+    Remove(text.slice(6,text.length-1))
+  }
+  else {
     unknownCommand(text);
   }
 }
 
-function help(){
-  console.log(" -->hello return hello!"+"\n"+" --> exit "+"\n"+" --> quit" )
+function help() {
+  console.log(" -->hello return hello!" + "\n" + " --> exit " + "\n" + " --> quit")
 }
 /**
  * prints "unknown command"
@@ -67,8 +73,8 @@ function help(){
  * @param  {string} c the text received
  * @returns {void}
  */
-function unknownCommand(c){
-  console.log('unknown command: "'+c.trim()+'"')
+function unknownCommand(c) {
+  console.log('unknown command: "' + c.trim() + '"')
 }
 
 /** 
@@ -77,7 +83,7 @@ function unknownCommand(c){
  * @returns {void}
  */
 function hello(b) {
-  console.log(b.trim()+ "!")
+  console.log(b.trim() + "!")
 }
 
 /**
@@ -85,35 +91,49 @@ function hello(b) {
  * @returns {void}
  */
 
-let List = ["Task one","Task two","Task three"]
-function list (){
-  
-  let li = List.map((tasks,index) =>`${index+1} - ${tasks}`
+let List = ["Task one", "Task two", "Task three"]
+function list() {
+
+  let li = List.map((tasks, index) => `${index + 1} - ${tasks}`
   ).join('\n')
   console.log(li);
-  }
-
- function add (){
- console.log("add your task")
- 
 }
 /**
  * add
  * @param {string} b
  * @returns {void}
  */
- function add(b) {
-  console.log(`add`)	 
+function add(b) {
   List.push(b.slice(4, b.length - 1))
   console.log(`added!`)
- }
+}
+/**
+* remove
+* @param {string} r
+* @returns {void}
+*/
+function remove(r) {
+  List.pop(r.lenght)
+  console.log("removed")
+}
+function Remove(nb){
+  let index=parseInt(nb);
+  if ( index>=1 && index <=List.length){
+    List.splice(index-1,1);
+  }
+  else (
+    console.log("eror")
+  )
+
+}
+
 /**
  * Exits the application
  *
  * @returns {void}
  */
 
-function quit(){
+function quit() {
   console.log('Quitting now, goodbye!')
   process.exit();
 }
