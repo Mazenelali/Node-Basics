@@ -64,7 +64,7 @@ function onDataReceived(text) {
 }
 
 function help() {
-  console.log(" -->hello return hello!" + "\n" + " --> exit " + "\n" + " --> quit")
+  console.log(" -->hello return hello!" + "\n" + " --> exit " + "\n" + " --> quit" + "\n"+ "--> list tasks" +'\n'+"-->add tasks" +'\n'+"-->remove tasks")
 }
 /**
  * prints "unknown command"
