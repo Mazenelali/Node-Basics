@@ -43,6 +43,9 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help()
   }
+  else if( text == 'list\n'){
+    list()
+  }
   else{
     unknownCommand(text);
   }
@@ -72,10 +75,24 @@ function hello(b) {
 }
 
 /**
+ *  list 
+ * @returns {void}
+ */
+
+let List = ["Task one","Task two","Task three"]
+function list (){
+  
+  let li = List.map((tasks,index ,) =>`${index+1} - ${tasks}`
+  ).join('\n')
+  console.log(li);
+  }
+
+/**
  * Exits the application
  *
  * @returns {void}
  */
+
 function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
